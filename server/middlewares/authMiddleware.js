@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-// Middleware to protect routes (require authentication)
 export const protect = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
@@ -20,7 +19,7 @@ export const protect = async (req, res, next) => {
         .json({ message: "Not authorized, user not found" });
     }
 
-    req.user = user; // Attach user to request
+    req.user = user; 
     next();
   } catch (err) {
     console.error("Auth Error:", err);
