@@ -13,6 +13,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 type JobFormValues = {
   title: string;
@@ -73,9 +74,11 @@ const EditJob = () => {
   const onSubmit: SubmitHandler<JobFormValues> = async (data) => {
     try {
       await api.put(`/jobs/${id}`, data);
+      toast.success("Job updated successfully");
       navigate("/employer/jobs");
     } catch (err) {
       console.error("Job update failed", err);
+      toast.error("Failed to update job. Please try again.");
     }
   };
 

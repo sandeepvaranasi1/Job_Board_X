@@ -19,12 +19,6 @@ router.get(
   getApplicantsForJob
 );
 router.delete("/:id", protect, authorizeRoles("jobseeker"), deleteApplication);
-router.get(
-  "/job/:id",
-  protect,
-  authorizeRoles("employer"),
-  getApplicantsForJob
-);
 
 router.patch(
   "/:id",
