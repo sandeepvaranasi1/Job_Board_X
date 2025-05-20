@@ -54,7 +54,6 @@ const EditJob = () => {
       try {
         const res = await api.get(`/jobs/${id}`);
         const job = res.data;
-        // ensure all values are strings for form compatibility
         reset({
           title: job.title || "",
           description: job.description || "",
